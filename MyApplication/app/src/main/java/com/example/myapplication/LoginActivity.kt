@@ -1,20 +1,31 @@
 package com.example.myapplication
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.FragmentActivity
 import com.example.myapplication.databinding.ActivityLoginBinding
 
-class LoginActivity : ComponentActivity() {
+
+class LoginActivity : FragmentActivity() {
     lateinit var binding: ActivityLoginBinding
-    lateinit var resultLauncher: ActivityResultLauncher<Intent>
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.btFg1.setOnClickListener {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fg_result, Result1Fragment())
+                .addToBackStack(null)
+                .commit()
+        }
+
+        binding.btFg2.setOnClickListener {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fg_result, Result2Fragment())
+                .addToBackStack(null)
+                .commit()
+        }
     }
 }
