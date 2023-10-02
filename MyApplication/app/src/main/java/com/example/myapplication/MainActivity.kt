@@ -3,15 +3,12 @@ package com.example.myapplication
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.ComponentActivity
-import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.activity.result.registerForActivityResult
+import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding    //bindng 객체 선언
     lateinit var resultLauncher: ActivityResultLauncher<Intent>
     var userId:String = "aaagwgwfq12f"

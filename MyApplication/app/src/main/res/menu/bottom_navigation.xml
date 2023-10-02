@@ -2,8 +2,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:id="@+id/item_fragment1"
+        android:icon="@drawable/baseline_home_24"
+        android:title="item1"
+        android:enabled="true" />
+    <item
+        android:id="@+id/item_fragment2"
+        android:icon="@drawable/baseline_home_24"
+        android:title="item2"
+        android:enabled="true"/>
+    />
+    <item
+        android:id="@+id/item_fragment3"
+        android:icon="@drawable/baseline_home_24"
+        android:title="item3"
+        android:enabled="true"/>
+    />
+    <item
+        android:id="@+id/item_fragment4"
+        android:icon="@drawable/baseline_home_24"
+        android:title="item4"
+        android:enabled="true"/>
+    />
 </menu>
