@@ -5,9 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityRegisterBinding
 
-class RegisterActivity : ComponentActivity() {
+class RegisterActivity : AppCompatActivity() {
     lateinit var binding1: ActivityRegisterBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
