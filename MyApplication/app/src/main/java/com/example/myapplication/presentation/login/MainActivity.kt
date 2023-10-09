@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.presentation.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,10 +7,12 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
+import com.example.myapplication.presentation.main.LoginActivity
+import com.example.myapplication.presentation.signup.RegisterActivity
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding    //bindng 객체 선언
-    lateinit var resultLauncher: ActivityResultLauncher<Intent>
+    lateinit var resultLauncher: ActivityResultLauncher<Intent>   //ActivityResultLauncher 사용하기 위해 laucher 선언
     var userId:String = "aaagwgwfq12f"
     var userPw:String = "bf131323t1f"
 
@@ -41,8 +43,8 @@ class MainActivity : AppCompatActivity() {
     //회원가입 버튼
     fun initSignupBtnClickListener() {
         binding.btRegister.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
-            resultLauncher.launch(intent)
+            val intent = Intent(this, RegisterActivity::class.java)   //돌아올 activity, 이동할 activity를 넣은 intent
+            resultLauncher.launch(intent)   // .launch(intent): intent 실행
         }
     }
     //registerForActivityResult 콜백

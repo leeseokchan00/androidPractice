@@ -1,14 +1,12 @@
-package com.example.myapplication
+package com.example.myapplication.presentation.main.page1
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.example.myapplication.databinding.ItemRecyclerViewBinding
+import com.example.myapplication.R
 
-lateinit var binding: ItemRecyclerViewBinding
 class RecyclerUser(val itemList: ArrayList<UserData>) :
     RecyclerView.Adapter<RecyclerUser.ViewHolder>() {
 
