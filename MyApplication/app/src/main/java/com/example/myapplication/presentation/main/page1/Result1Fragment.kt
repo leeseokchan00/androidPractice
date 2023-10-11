@@ -19,14 +19,14 @@ class Result1Fragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentResult1Binding.inflate(inflater, container, false)
 
-
+        //임시데이터를 어뎁터에 넣고 변수로 만듦
         val itemList = ArrayList<UserData>()
-
         for(i: Int in 1.. 100) {   //
             itemList.add(UserData("22:01", i.toString(), "이석찬"))
         }
-        val boardAdapter = RecyclerUser(itemList)  //임시데이터를 어뎁터에 넣고 변수로 만듦
-        boardAdapter.notifyDataSetChanged()   //notifyDataSetChanged()로 어뎁터,리사이클러뷰 갱신
+        val boardAdapter = UserAdapter()
+
+        boardAdapter.submitList(itemList)   //notifyDataSetChanged()로 어뎁터,리사이클러뷰 갱신
         binding.rvRecycler1.adapter = boardAdapter   // 리사이클러뷰에 어뎁터 연결
         binding.rvRecycler1.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         //레이아웃매니저로 뷰에 나타날 방식 정하기

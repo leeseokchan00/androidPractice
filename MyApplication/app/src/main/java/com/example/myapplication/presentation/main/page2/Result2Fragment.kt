@@ -9,8 +9,8 @@ import com.example.myapplication.databinding.FragmentResult2Binding
 
 
 class Result2Fragment : Fragment() {
-
     lateinit var binding: FragmentResult2Binding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -18,5 +18,7 @@ class Result2Fragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentResult2Binding.inflate(inflater, container, false)
         return binding.root
+
+        binding.btPage2Submit.setOnClickListener {  }
     }
 }
