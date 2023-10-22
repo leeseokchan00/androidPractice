@@ -1,4 +1,4 @@
-package com.example.myapplication.presentation.main.page1
+package model
 
 data class UserData(
     val time: String,

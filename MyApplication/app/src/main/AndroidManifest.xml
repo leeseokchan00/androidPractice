@@ -13,30 +13,32 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.main.page1.ViewRecycler"
+            android:name=".presentation.main.page1.Result1Fragment"
             android:exported="false"
             android:label="@string/title_activity_view_recycler"
             android:theme="@style/Theme.MyApplication" />
         <activity
             android:name=".presentation.signup.RegisterActivity"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/title_activity_register"
-            android:theme="@style/Theme.MyApplication" />
+            android:theme="@style/Theme.MyApplication">
+        </activity>
         <activity
             android:name=".presentation.login.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.MyApplication"></activity>
-        <activity
-            android:name=".presentation.main.LoginActivity"
-            android:exported="true"
-            android:label="login"
             android:theme="@style/Theme.MyApplication">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>/>
+        </activity>
+        <activity
+            android:name=".presentation.main.LoginActivity"
+            android:exported="true"
+            android:label="login"
+            android:theme="@style/Theme.MyApplication">
         </activity>
     </application>
 

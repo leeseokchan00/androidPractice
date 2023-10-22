@@ -13,8 +13,6 @@ import com.example.myapplication.presentation.signup.RegisterActivity
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding    //bindng 객체 선언
     lateinit var resultLauncher: ActivityResultLauncher<Intent>   //ActivityResultLauncher 사용하기 위해 laucher 선언
-    var userId:String = "aaagwgwfq12f"
-    var userPw:String = "bf131323t1f"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,14 +21,19 @@ class MainActivity : AppCompatActivity() {
 
         getResult()
         initSignupBtnClickListener()
-        initLoginBtnClickListener(userId, userPw)
+        initLoginBtnClickListener()
 
     }
 
     //로그인 버튼
-    fun initLoginBtnClickListener(id: String?, pw: String?) {
+    fun initLoginBtnClickListener() {
         binding.btLogin.setOnClickListener {
-            if (binding.etId.text.toString() == userId && binding.etPw.text.toString() == userPw) {
+            val sharedPreference = getSharedPreferences("signup", MODE_PRIVATE)
+            // 회원가입 페이지에서 저장했던 name과 같은 이름의 sharedPreference
+            val ID = sharedPreference.getString("id","asdasd1")
+            val PW = sharedPreference.getString("pw","asdsadasdd2")
+
+            if(binding.etId.text.toString() == ID && binding.etPw.text.toString() == PW){
                 val intent = Intent(this, LoginActivity::class.java)
                 resultLauncher.launch(intent)
                 finish()
@@ -51,10 +54,6 @@ class MainActivity : AppCompatActivity() {
     fun getResult(){
         resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
         {result ->
-            if (result.resultCode == RESULT_OK){
-                userId = result.data?.getStringExtra("userId").toString()
-                userPw = result.data?.getStringExtra("userPw").toString()
-            }
         }
     }
 }
