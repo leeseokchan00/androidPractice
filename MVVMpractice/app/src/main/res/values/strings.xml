@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MVVMpractice</string>
+    <string name="name">%1$s</string>
+    <string name="age">%1$d</string>
+</resources>
