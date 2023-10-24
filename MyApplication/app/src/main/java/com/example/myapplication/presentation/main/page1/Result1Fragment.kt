@@ -27,8 +27,9 @@ class Result1Fragment : Fragment() {
         }
         val boardAdapter = UserAdapter()
 
-        boardAdapter.submitList(itemList)   //notifyDataSetChanged()로 어뎁터,리사이클러뷰 갱신
-        binding.rvRecycler1.adapter = boardAdapter   // 리사이클러뷰에 어뎁터 연결
+
+        boardAdapter.submitList(itemList)   //sublist로 어뎁터에 리스트를 넘겨줌
+        binding.rvRecycler1.adapter = boardAdapter   // 리사이클러뷰에 리스트어뎁터 연결
         binding.rvRecycler1.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         //레이아웃매니저로 뷰에 나타날 방식 정하기
         // requireContext() : Fragment의 context를 가져오기 위해서는 this 대신 requireContext() 사용
