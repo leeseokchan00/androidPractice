@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.databinding.FragmentResult1Binding
-import model.UserData
+import model.RecyclerData
 
 
 class Result1Fragment : Fragment() {
@@ -21,9 +21,9 @@ class Result1Fragment : Fragment() {
         binding = FragmentResult1Binding.inflate(inflater, container, false)
 
         //임시데이터를 어뎁터에 넣고 변수로 만듦
-        val itemList = ArrayList<UserData>()
+        val itemList = ArrayList<RecyclerData>()
         for(i: Int in 1.. 100) {   //
-            itemList.add(UserData("22:01", i.toString(), "이석찬"))
+            itemList.add(RecyclerData("22:01", i.toString(), "이석찬"))
         }
         val boardAdapter = UserAdapter()
 

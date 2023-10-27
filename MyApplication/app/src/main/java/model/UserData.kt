@@ -1,7 +1,10 @@
 package model
 
-data class UserData(
-    val time: String,
-    val title: String,
-    val name: String
-)
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+data class UserData (
+    val id:String,
+    val pw:String
+) :Parcelable
