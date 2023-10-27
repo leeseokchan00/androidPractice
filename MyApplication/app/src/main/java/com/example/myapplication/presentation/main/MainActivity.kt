@@ -8,7 +8,7 @@ import com.example.myapplication.presentation.main.page1.Result1Fragment
 import com.example.myapplication.presentation.main.page2.Result2Fragment
 
 
-class LoginActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
