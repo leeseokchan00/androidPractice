@@ -3,17 +3,18 @@ package com.example.myapplication.presentation.main
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.R
-import com.example.myapplication.databinding.ActivityLoginBinding
+import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.presentation.main.page1.Result1Fragment
 import com.example.myapplication.presentation.main.page2.Result2Fragment
+import com.example.myapplication.presentation.main.page3.Result3Fragment
 
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityLoginBinding
+    lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.bnBottomNavigation.setOnItemSelectedListener { item ->
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.item_fragment3 -> {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.fg_result, Result1Fragment())
+                        .replace(R.id.fg_result, Result3Fragment())
                         .commit()
                 }
 
