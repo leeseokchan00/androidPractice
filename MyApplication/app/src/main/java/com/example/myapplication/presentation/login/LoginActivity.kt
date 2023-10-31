@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityLoginBinding
 import com.example.myapplication.presentation.main.MainActivity
@@ -15,6 +16,7 @@ import model.UserData
 class LoginActivity : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding    //bindng 객체 선언
     lateinit var resultLauncher: ActivityResultLauncher<Intent>   //ActivityResultLauncher 사용하기 위해 laucher 선언
+    private val viewmodel by viewModels<LoginViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +26,14 @@ class LoginActivity : AppCompatActivity() {
         getResult() // intent받아와서 로그인
         initSignupBtnClickListener() //회원가입
         autoLogin()
+
+        viewmodel.loginState.observe(this){
+            if (viewmodel.loginState.value==true){
+                val intent = Intent(this, MainActivity::class.java)
+                resultLauncher.launch(intent)
+                finish()
+            }
+        }
     }
 
     //registerForActivityResult 콜백
@@ -33,7 +43,6 @@ class LoginActivity : AppCompatActivity() {
             if(result.resultCode== RESULT_OK){
                 val user = result.data?.getParcelableExtra("user", UserData::class.java)
                 initLoginBtnClickListener(user)// 로그인
-
             }
         }
     }
@@ -69,17 +78,11 @@ class LoginActivity : AppCompatActivity() {
 
     fun autoLogin(){
         val sharedpreferences = getSharedPreferences("loginState", MODE_PRIVATE)
-        if(sharedpreferences.getBoolean("true",false)==true){
-            val intent = Intent(this, MainActivity::class.java)
-            resultLauncher.launch(intent)
-            finish()
+        if(sharedpreferences.getBoolean("true",false)){
+            viewmodel.LoginStateChange()
         }
         else{
             getResult()
         }
     }
-    fun Login(id:String, pw:String){
-
-    }
-
 }
