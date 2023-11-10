@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.androidpractice.R
 import com.example.androidpractice.databinding.ActivityMainBinding
-import com.example.androidpractice.presentation.main.page1.Page1Fragment
+import com.example.androidpractice.presentation.main.home.HomeFragment
 import com.example.androidpractice.presentation.main.page2.Page2Fragment
 import com.example.androidpractice.presentation.main.page3.Page3Fragment
 
@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.item_fragment1 -> {
 
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.fg_result, Page1Fragment())   //replace: 프레그먼트 교체
+                        .replace(R.id.fg_result, HomeFragment())   //replace: 프레그먼트 교체
                         .commit()  //commit(): 현재 상태 적용
                 }
 

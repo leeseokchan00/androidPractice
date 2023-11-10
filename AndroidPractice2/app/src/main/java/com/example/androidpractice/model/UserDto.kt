@@ -1,6 +1,8 @@
 package com.example.androidpractice.model
 
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 @Serializable
 data class UserDto(
@@ -8,10 +10,14 @@ data class UserDto(
     val pw: String? = ""
 )
 
-fun toUserDto(user: UserData?): UserDto {
+fun toUserDto(user:UserData?): UserDto{
     return UserDto(user?.id, user?.pw)
 }
 
-fun toUser(user: UserDto): UserData {
-    return UserData(user.id, user.pw)
+fun encode(user: UserDto?): String {
+    return Json.encodeToString(user)
+}
+
+fun decode(user: String) {
+    Json.decodeFromString<UserDto>(user)
 }

@@ -1,8 +1,8 @@
 package com.example.androidpractice
 
 import android.app.Application
-import com.example.androidpractice.util.LoginStateObject
-import com.example.androidpractice.util.UserDataObject
+import com.example.androidpractice.util.sharedpreferences.LoginStateObject
+import com.example.androidpractice.util.sharedpreferences.UserDataObject
 
 class MyApplication:Application() {
     companion object{

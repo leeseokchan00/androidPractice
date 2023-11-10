@@ -5,6 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.androidpractice.MyApplication
 import com.example.androidpractice.model.UserData
+import com.example.androidpractice.model.UserDto
+import com.example.androidpractice.model.encode
+import com.example.androidpractice.model.toUserDto
 import com.google.gson.Gson
 
 class LoginViewModel : ViewModel() {
@@ -18,7 +21,8 @@ class LoginViewModel : ViewModel() {
     }
 
     fun setUserData(user: UserData?) {
-        val serial = Gson().toJson(user) // 수정해야됨
+        val dto = toUserDto(user)
+        val serial = encode(dto)
         MyApplication.userdata.setString("user", serial)
     }
 
@@ -26,7 +30,7 @@ class LoginViewModel : ViewModel() {
         val touser = MyApplication.userdata.getString("user", "null") // 수정
         val user = Gson().fromJson(touser, UserData::class.java)  //수정
 
-        if (id == user.id && pw == user.pw) {
+        if (id == user?.id && pw == user?.pw) {
             MyApplication.loginState.setBoolean("true", true)
             loginStateChange()
             return true

@@ -1,35 +1,30 @@
-package com.example.androidpractice.presentation.main.page1
+package com.example.androidpractice.presentation.main.home
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidpractice.databinding.ItemRecyclerViewBinding
 import com.example.androidpractice.model.RecyclerData
 
-class Page1Adapter : ListAdapter<RecyclerData, Page1Adapter.ItemViewHolder>(diffUtil) {
-    inner class ItemViewHolder(private val binding: ItemRecyclerViewBinding) :
-    //뷰홀더 클래스: 재활용 되는 최초의 뷰객체를 기억하고 있는 (홀딩)객체
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(bookModel: RecyclerData) {
-            binding.tvRecyclerTitle.text = bookModel.title
-            binding.tvRecyclerName.text = bookModel.name
-            binding.tvRecyclerTime.text = bookModel.time
-        }
+class HomeAdapter(
+    private val onLongClicked: (RecyclerData) -> Unit,
+    private val onClicked: (RecyclerData) -> Unit
+) : ListAdapter<RecyclerData, HomeViewHolder>(diffUtil) {
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
+        // viewholder가 없다면 viewholder 생성
+        //return HomeViewHolder(ItemRecyclerViewBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return HomeViewHolder(ItemRecyclerViewBinding.inflate(LayoutInflater.from(parent.context),parent,false),
+            onLongClicked,
+            onClicked)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        // viewholder가 없다면 viewholder 생성
-        return ItemViewHolder(
-            ItemRecyclerViewBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
-    }
-    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
         // 생성된 viewholder에 데이터를 binding 해줌
         holder.bind(currentList[position])
     }

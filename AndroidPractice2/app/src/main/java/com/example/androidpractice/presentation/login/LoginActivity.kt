@@ -67,8 +67,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun autoLogin() {
-        if (MyApplication.loginState.getBoolean("true", false)) {
-            viewmodel.loginStateChange()
-        }
+        viewmodel.loginStateChange()
     }
 }
