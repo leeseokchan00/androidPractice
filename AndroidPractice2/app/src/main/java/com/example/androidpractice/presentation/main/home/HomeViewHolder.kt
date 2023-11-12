@@ -2,15 +2,16 @@ package com.example.androidpractice.presentation.main.home
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidpractice.databinding.ItemRecyclerViewBinding
-import com.example.androidpractice.model.RecyclerData
+import com.example.androidpractice.model.FriendData
 
 class HomeViewHolder(
     private val binding: ItemRecyclerViewBinding,
-    private val onLongClicked: (RecyclerData) -> Unit,
-    private val onClicked: (RecyclerData) -> Unit
+    private val onLongClicked: (FriendData) -> Unit,
+    private val onClicked: (FriendData) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(data: RecyclerData) {
-        binding.tvRecyclerTitle.text = data.title
+
+    fun bind(data: FriendData) {
+        binding.tvRecyclerTitle.text = data.id.toString()
         binding.tvRecyclerName.text = data.name
         binding.tvRecyclerTime.text = data.time
 

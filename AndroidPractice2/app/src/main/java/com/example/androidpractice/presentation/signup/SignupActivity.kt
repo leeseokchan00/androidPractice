@@ -13,10 +13,10 @@ class SignupActivity : AppCompatActivity() {
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        finishSignup()
+        initSignupBtnClickListener()
     }
 
-    fun finishSignup() {
+    fun initSignupBtnClickListener() {
         binding.btRegSubmit.setOnClickListener {
 
             val user = UserData(

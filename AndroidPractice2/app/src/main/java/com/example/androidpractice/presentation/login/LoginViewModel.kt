@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.androidpractice.MyApplication
 import com.example.androidpractice.model.UserData
-import com.example.androidpractice.model.UserDto
 import com.example.androidpractice.model.encode
 import com.example.androidpractice.model.toUserDto
 import com.google.gson.Gson

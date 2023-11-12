@@ -4,14 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.example.androidpractice.databinding.FragmentAlertDialogBinding
 
 class AlertDialogFragment : DialogFragment() {
     lateinit var binding: FragmentAlertDialogBinding
-    private var handlerNegativeButton: (()-> Unit)? = null
-    private var handlerPositiveButton: (()-> Unit)? = null
+    private var handlerNegativeButton: (() -> Unit)? = null
+    private var handlerPositiveButton: (() -> Unit)? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,7 +31,7 @@ class AlertDialogFragment : DialogFragment() {
         val negativeButtonLabel = arguments?.getString(ARG_NEGATIVE_BUTTON_LABEL)
         val positiveButtonLabel = arguments?.getString(ARG_POSITIVE_BUTTON_LABEL)
 
-        if(title!=null && negativeButtonLabel != null && positiveButtonLabel != null){
+        if (title != null && negativeButtonLabel != null && positiveButtonLabel != null) {
             initDialogText(title, negativeButtonLabel, positiveButtonLabel)
         }
         initNegativeButtonClickListener(handlerNegativeButton)
@@ -44,20 +43,20 @@ class AlertDialogFragment : DialogFragment() {
         title: String,
         negativeButtonLabel: String,
         positiveButtonLabel: String
-    ){
+    ) {
         binding.tvAlertFragmentTitle.text = title
         binding.tvAlertFragmentNegative.text = negativeButtonLabel
         binding.tvAlertFragmentPositive.text = positiveButtonLabel
     }
 
-    private fun initNegativeButtonClickListener(handlerNegativeButton: (() -> Unit)?){
+    private fun initNegativeButtonClickListener(handlerNegativeButton: (() -> Unit)?) {
         binding.tvAlertFragmentNegative.setOnClickListener {
             handlerNegativeButton?.invoke()
             dismiss()
         }
     }
 
-    private fun initpositiveButtonClickListener(handlerPositiveButton: (() -> Unit)?){
+    private fun initpositiveButtonClickListener(handlerPositiveButton: (() -> Unit)?) {
         binding.tvAlertFragmentPositive.setOnClickListener {
             handlerPositiveButton?.invoke()
             dismiss()
@@ -73,8 +72,8 @@ class AlertDialogFragment : DialogFragment() {
         fun newInstance(
             // fragment생성을 위한 newInstance
             title: String,
-            negativeButtonLabel:String,
-            positiveButtonLabel:String,
+            negativeButtonLabel: String,
+            positiveButtonLabel: String,
             handlerNegativeButton: () -> Unit,
             handlerPositiveButton: () -> Unit
         ): AlertDialogFragment {
@@ -82,7 +81,7 @@ class AlertDialogFragment : DialogFragment() {
             //bundle로 키값을 저장해서 생성할때 반환해줌
             arg.putString(ARG_TITLE, title)
             arg.putString(ARG_NEGATIVE_BUTTON_LABEL, negativeButtonLabel)
-            arg.putString(ARG_POSITIVE_BUTTON_LABEL,positiveButtonLabel)
+            arg.putString(ARG_POSITIVE_BUTTON_LABEL, positiveButtonLabel)
 
             val fragment = AlertDialogFragment()
             fragment.arguments = arg
