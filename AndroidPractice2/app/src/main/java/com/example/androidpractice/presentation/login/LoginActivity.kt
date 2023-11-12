@@ -7,7 +7,6 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.example.androidpractice.MyApplication
 import com.example.androidpractice.databinding.ActivityLoginBinding
 import com.example.androidpractice.model.UserData
 import com.example.androidpractice.presentation.main.MainActivity
@@ -25,7 +24,7 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        getResult()
+        initResultLaucher()
         initSignupBtnClickListener()
         initLoginBtnClickListener()
         autoLogin()
@@ -39,7 +38,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    fun getResult() {
+    fun initResultLaucher() {
         resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
         { result ->
             if (result.resultCode == RESULT_OK) {
