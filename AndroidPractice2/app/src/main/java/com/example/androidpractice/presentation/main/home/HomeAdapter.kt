@@ -26,12 +26,12 @@ class HomeAdapter(
     }
 
 
-
     companion object {
         val diffUtil = object : DiffUtil.ItemCallback<FriendData>() {
             override fun areItemsTheSame(oldItem: FriendData, newItem: FriendData): Boolean {
                 return oldItem.id == newItem.id
             }
+
             override fun areContentsTheSame(oldItem: FriendData, newItem: FriendData): Boolean {
                 return oldItem == newItem
             }

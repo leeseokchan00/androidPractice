@@ -13,7 +13,6 @@ import com.example.androidpractice.presentation.main.MainActivity
 import com.example.androidpractice.presentation.signup.SignupActivity
 import com.example.androidpractice.util.getParcelable
 
-
 class LoginActivity : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding
     lateinit var resultLauncher: ActivityResultLauncher<Intent>
@@ -28,14 +27,7 @@ class LoginActivity : AppCompatActivity() {
         initSignupBtnClickListener()
         initLoginBtnClickListener()
         autoLogin()
-
-        viewmodel.loginState.observe(this) {
-            if (viewmodel.loginState.value == true) {
-                val intent = Intent(this, MainActivity::class.java)
-                resultLauncher.launch(intent)
-                finish()
-            }
-        }
+        initLoginStateObserver()
     }
 
     fun initResultLaucher() {
@@ -62,6 +54,17 @@ class LoginActivity : AppCompatActivity() {
         binding.btRegister.setOnClickListener {
             val intent = Intent(this, SignupActivity::class.java)
             resultLauncher.launch(intent)
+        }
+    }
+
+    fun initLoginStateObserver() {
+        viewmodel.loginState.observe(this) {
+            if (viewmodel.loginState.value == true) {
+                Toast.makeText(this, "로그인 완료", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, MainActivity::class.java)
+                resultLauncher.launch(intent)
+                finish()
+            }
         }
     }
 

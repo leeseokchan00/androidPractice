@@ -7,11 +7,14 @@ import androidx.room.Query
 @Dao
 interface FriendDao {
     @Insert
-    fun insertFriend(friend: FriendEntity)
+    suspend fun insertFriend(friend: FriendEntity)
 
-    @Query("select * from friendentity")
-    fun getAll():FriendEntity
+    @Query("select * from friend_table")
+    suspend fun getAll(): List<FriendEntity>
 
-    @Query("delete from friendentity")
-    fun deleteAll()
+    @Query("delete from friend_table where id = :id")
+    suspend fun delete(id: Int?)
+
+    @Query("delete from friend_table")
+    suspend fun deleteAll()
 }
