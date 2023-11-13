@@ -1,12 +1,29 @@
 package com.example.androidpractice.model
 
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "friend_table")
 data class FriendEntity(
-    @ColumnInfo val time: String,
-    @PrimaryKey val id: Int,
-    @ColumnInfo val name: String
-)
+    val time: String?,
+    @PrimaryKey(autoGenerate = true) val id: Int?,
+    val name: String?
+) {
+    companion object {
+        fun toFriendList(friendList: List<FriendData>) = friendList.map { data ->
+            FriendEntity(
+                time = data.time,
+                id = data.id,
+                name = data.name,
+            )
+        }
+
+        fun toFriend(friendInfoList: List<FriendEntity>) = friendInfoList.map { data ->
+            FriendData(
+                time = data.time,
+                id = data.id,
+                name = data.name,
+            )
+        }
+    }
+}

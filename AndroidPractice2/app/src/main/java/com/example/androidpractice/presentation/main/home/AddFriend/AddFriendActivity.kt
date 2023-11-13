@@ -1,7 +1,7 @@
-package com.example.androidpractice.presentation.main.home.AddFriend
+package com.example.androidpractice.presentation.main.home.addfriend
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.androidpractice.databinding.ActivityAddFriendBinding
 import com.example.androidpractice.model.FriendData
 
@@ -15,7 +15,7 @@ class AddFriendActivity : AppCompatActivity() {
         initAddFriendBtnClickListener()
     }
 
-    fun initAddFriendBtnClickListener(){
+    fun initAddFriendBtnClickListener() {
         binding.btAddFriend.setOnClickListener {
 
             val user = FriendData(
